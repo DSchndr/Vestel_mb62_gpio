@@ -3,7 +3,7 @@ MStar Titania 4 userspace GPIO access
 
 Here is my reverse engineering effort to drive the GPIO (right now: the power led) of the MStar Titania 4 SOC used in Vestel MB62 boards
 
-To use the code with other chips, replace the gpio mapping from the kernel sources :) @ https://github.com/Benjamin-Dobell/kogan-tv-gpl/tree/master/Kernel_updated/mstar/mstar/gpio
+To use the code with other chip familys, replace the gpio mapping from the kernel sources :) @ https://github.com/Benjamin-Dobell/kogan-tv-gpl/tree/master/Kernel_updated/mstar/mstar/gpio
 
 # How to get root
 
