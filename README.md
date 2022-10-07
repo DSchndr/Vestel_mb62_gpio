@@ -38,3 +38,12 @@ Get `Codesourcery mips 4.3-51` compiler and extract it in `cross` then run the b
 # All nice, how do I change the theme colors tho?
 
 Dump `/vendor/aurora.elf`, hex color values start @ 0xc95218, you probably need the same stuff the peeps @ cabot / vestel smoked when they came up with the gui framework in order to modify it :)
+
+
+# PWM
+
+There is mstar pwm code at https://github.com/Benjamin-Dobell/kogan-tv-gpl/blob/master/Kernel_updated/mstar/mstar/bootlogo/sec_panel.c
+
+Aurora maps a pointer to pm bank base (0x1f0...) in the function at 0x00877408
+
+Another function creates a new pointer to `(addr * 2 - (addr & 1)) + PWM_BASE_ptr_to_PM)`, the OEN / Dutycycle function sets `0x3200` to `1`, writes some parameter (pwm reg val) somewhere and sets it back to `0`
