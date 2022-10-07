@@ -93,6 +93,7 @@ int main(int argc, char* argv[])
 	int c = 0;
 	while(c != 'x') {
         	printf("H\n");
+		// the led is kinda funny on this platform, look at the schematic to see how gpio 11 and 7 drive the led, no idea why they did this xD
 		//MHal_GPIO_Set_High(conv);
 		MHal_GPIO_Set_Low(11);
 		MHal_GPIO_Set_High(7); //gpio_set 7-1 turns off pled
