@@ -33,7 +33,7 @@ to boot the platform and access your usb stick @ /mnt/sda1
 
 # How to compile?
 
-Get `Codesourcery mips 4.3-51` compiler and extract it in `cross` then run the build script, `a.out` is the binary that runs on the tv
+Get the `Codesourcery mips 4.3-51` compiler and extract it in `cross` then run the build script, `a.out` is the binary that runs on the tv
 
 # All nice, how do I change the theme colors tho?
 
@@ -42,8 +42,12 @@ Dump `/vendor/aurora.elf`, hex color values start @ 0xc95218, you probably need 
 
 # PWM
 
-There is mstar pwm code at https://github.com/Benjamin-Dobell/kogan-tv-gpl/blob/master/Kernel_updated/mstar/mstar/bootlogo/sec_panel.c
+The PWM Peripheral works like this:
 
-Aurora maps a pointer to pm bank base (0x1f0...) in the function at 0x00877408
+Your base adress is `0x1f200000`, the "NONPM" area
 
-Another function creates a new pointer to `(addr * 2 - (addr & 1)) + PWM_BASE_ptr_to_PM)`, the OEN / Dutycycle function sets `0x3200` to `1`, writes some parameter (pwm reg val) somewhere and sets it back to `0`
+In order to Switch to the PWM Bank, write `0x1` to `0x1f206400`
+
+To set - for example - the PWM2 (backlight) duty cycle write a U32 with your U8 value to `0x1f206420`
+
+What are the adresses? you might ask, register offsets are in `mdrv_pwm.h`, do `BASE + (REG_OFF << 2)`
