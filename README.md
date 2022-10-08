@@ -51,3 +51,13 @@ In order to Switch to the PWM Bank, write `0x1` to `0x1f206400`
 To set - for example - the PWM2 (backlight) duty cycle write a U32 with your U8 value to `0x1f206420`
 
 What are the adresses? you might ask, register offsets are in `mdrv_pwm.h`, do `BASE + (REG_OFF << 2)`
+
+# GOP
+
+The GOP (graphics output pipeline?) gets used to draw on the screen
+
+GOP registers seem to be empty so there might be some bankswitching going on?
+
+How it works is quite simple: you initialize GOP0/1/2 (color fmt, size, pos, ...) and give it the adress of a chunk of dma memory it will read from (just give the register an adress)
+
+Then you just write to it like a normal framebuffer
