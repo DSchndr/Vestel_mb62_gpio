@@ -61,3 +61,7 @@ GOP registers seem to be empty so there might be some bankswitching going on?
 How it works is quite simple: you initialize GOP0/1/2 (color fmt, size, pos, ...) and give it the adress of a chunk of dma memory it will read from (just give the register an adress)
 
 Then you just write to it like a normal framebuffer
+
+dma mem in userspace:
+
+https://blakerain.com/blog/allocating-memory-for-dma-in-linux
